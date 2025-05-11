@@ -1,2 +1,93 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://Meekdai.github.io/Gmeek-template</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Meekdai.github.io/Gmeek-template</link></image><lastBuildDate>Thu, 14 Mar 2024 09:17:29 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>请接着之后的安装步骤执行</title><link>https://Meekdai.github.io/Gmeek-template/post/qing-jie-zhao-zhi-hou-de-an-zhuang-bu-zou-zhi-xing.html</link><description>如果你点击了`READM.md`的链接后，看到了这个页面，请继续之后的安装步骤执行。</description><guid isPermaLink="true">https://Meekdai.github.io/Gmeek-template/post/qing-jie-zhao-zhi-hou-de-an-zhuang-bu-zou-zhi-xing.html</guid><pubDate>Thu, 14 Mar 2024 09:15:10 +0000</pubDate></item><item><title>这是Gmeek模板仓库</title><link>https://Meekdai.github.io/Gmeek-template/post/zhe-shi-Gmeek-mo-ban-cang-ku.html</link><description>通过这个模板创建库，可以大大减少部署Gmeek博客的配置步骤。</description><guid isPermaLink="true">https://Meekdai.github.io/Gmeek-template/post/zhe-shi-Gmeek-mo-ban-cang-ku.html</guid><pubDate>Wed, 20 Dec 2023 07:42:24 +0000</pubDate></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Sun, 11 May 2025 11:52:26 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>JDBC</title><link>https://xxxyjade17.github.io/post/JDBC.html</link><description># JDBC是什么
+JDBC（Java DataBase Connectivity）使用 Java 语言操作关系型数据库的一套 API
+# 导入依赖
+```xml
+&lt;dependency&gt;
+        &lt;groupId&gt;com.mysql&lt;/groupId&gt;
+        &lt;artifactId&gt;mysql-connector-j&lt;/artifactId&gt;
+        &lt;version&gt;8.0.33&lt;/version&gt;
+&lt;/dependency&gt;
+```
+# 简单示例
+```java
+[1.注册驱动]
+Class.forName('com.mysql.cj.jdbc.Driver');
+
+[2.获取数据库连接]
+//数据库地址
+String url='jdbc:mysql://localhost:3306/web';     
+//数据库用户名
+String username='root';
+//密码
+String password='xxxyjade17';
+//创建连接对象
+Connection connection=DriverManager.getConnection(url,username,password);
+
+[3.获取SQL语句执行]
+//创建预执行对象
+Statement statement=connection.createStatement();
+
+[4.执行sql]
+//接收返回值
+int i=statement.executeUpdate('update user set age = 30 where id = 1');
+
+[5.释放资源]
+statement.close();
+connection.close();
+```
+# 预编译示例
+```java
+[1.数据库配置]
+String url='jdbc:mysql://localhost:3306/web';
+String username='root';
+String password='xxxyjade17';
+//数据库操作语句
+String sql='SELECT id,username,password,name,age from user where username=? and password=?';
+
+[2.创建对象]
+//连接对象
+Connection connection = null;
+//预编译对象
+PreparedStatement stmt = null;
+//查询返回的结果
+ResultSet rs = null;  
+
+[3.执行]
+try{
+    //创建驱动
+    Class.forName('com.mysql.cj.jdbc.Driver');
+    //获取连接
+    connection=DriverManager.getConnection(url,username,password);
+    //获取预编译对象
+    stmt=connection.prepareStatement(sql);
+    //赋值
+    stmt.setString(1,'daqiao');
+    stmt.setString(2,'123456');
+    //执行操作
+    rs=stmt.executeQuery();
+    while(rs.next()){
+        User user=new User(
+            rs.getInt('id'),
+            rs.getString('username'),
+            rs.getString('password'),
+            rs.getString('name'),
+            rs.getInt('age')
+        );
+        System.out.println(user);
+    }
+} catch (ClassNotFoundException e) {
+    throw new RuntimeException(e);
+} catch (SQLException e) {
+    throw new RuntimeException(e);
+} finally {
+    try{
+        if(rs!=null)rs.close();
+        if(stmt!=null)stmt.close();
+        if(connection!=null)connection.close();
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+}
+```
+。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/JDBC.html</guid><pubDate>Sun, 11 May 2025 11:52:01 +0000</pubDate></item></channel></rss>
