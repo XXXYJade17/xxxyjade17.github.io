@@ -1,5 +1,51 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Sun, 11 May 2025 14:27:55 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>MySQL - DCL</title><link>https://xxxyjade17.github.io/post/MySQL%20-%20DCL.html</link><description># DCL
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Sun, 11 May 2025 16:58:48 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>PageHelper</title><link>https://xxxyjade17.github.io/post/PageHelper.html</link><description># 什么是PageHelper
+**PageHelper是第三方提供在 Mybatis 框架中实现分页的插件, 用来简化分页操作, 提高开发效率**
+***
+# 导入依赖
+```
+&lt;!--分页插件PageHelper--&gt;
+&lt;dependency&gt;
+       &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;
+       &lt;artifactId&gt;pagehelper-spring-boot-starter&lt;/artifactId&gt;
+       &lt;version&gt;1.4.7&lt;/version&gt;
+&lt;/dependency&gt;
+```
+# 实现代码
+- ### Mapper接口
+  ```
+  @Mapper
+  public interface DemoMapper {
+      @Select('select emp.*,dept.name deptName from emp left join dept on emp.dept_id=dept.id order by emp.update_time desc')
+      public List&lt;Emp&gt; list();
+   } 
+  ```
+  **在实现分页查找的MySQL语句省略limit部分**
+- ### Service实现类
+  ```
+    @Override
+    public PageResult&lt;Emp&gt; page(Integer page, Integer pageSize) {
+
+            /**
+               *设置分页参数
+               *@param page 页码
+               *@param pageSize 单页记录数
+               */
+            PageHelper.startPage(page,pageSize);
+
+            //执行查询
+            List&lt;Emp&gt; empList = empMapper.list();
+
+            //结果封装
+            Page&lt;Emp&gt; p = (Page)empList;
+
+            return new PageResult&lt;Emp&gt;(p.getTotal(),p.getResult());
+    }
+  ```
+# 总结
+  - MySQL语句少写了limit部分
+  - Mapper接口可以不用再写page和pageSize参数
+  - 不用重新去计算page的起始索引。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/PageHelper.html</guid><pubDate>Sun, 11 May 2025 16:50:14 +0000</pubDate></item><item><title>MySQL - DCL</title><link>https://xxxyjade17.github.io/post/MySQL%20-%20DCL.html</link><description># DCL
 ## 管理用户
 - ### 查询用户
 ```
