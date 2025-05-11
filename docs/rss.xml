@@ -1,5 +1,46 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Sun, 11 May 2025 11:52:26 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>JDBC</title><link>https://xxxyjade17.github.io/post/JDBC.html</link><description># JDBC是什么
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Sun, 11 May 2025 12:17:18 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>MySQL - DQL</title><link>https://xxxyjade17.github.io/post/MySQL%20-%20DQL.html</link><description># DQL
+
+## 条件查询:
+### select 字段表 from 表名 where 条件列表;
+### 条件列表
+- and  &amp;&amp;  :  与
+- or  ||  :  或
+- not  !  :  非
+- is null  :  是否空
+- &lt;&gt;  !=  :  不等
+- between  __  and  __  : 之间
+- in( __ , __ , ... ) : 满足条件
+- like '_%'  : 模糊匹配   _单个字符   %任意字符
+***
+## 聚合函数
+- count( )  :  统计行数
+- avg( )  :  平均值
+- max( )  :  最大值
+- min( )  :  最小值
+- sum( )  :  求和
+***
+## 分组查询
+### select 字段表 from 表名 group by 字段表 having 筛选条件;
+### 执行顺序 : where &gt; 聚合函数 &gt; having
+***
+## 排序查询 ( 默认升序 ) 
+### 降序查询 : 
+### select 字段表 from 表名 order by 字段表 desc;
+### 升序查询 : 
+### select 字段表 from 表名 order by 字段表 asc;
+***
+## 分页查询
+### select 字段表 from 表名 limit 起始索引,查询记录数;
+### 起始索引默认为0
+***
+## DQL执行顺序
+- select        4      
+- from         1        
+- where       2        
+- group by  ____  having      3       
+- order by   5        
+- limit          6        。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/MySQL%20-%20DQL.html</guid><pubDate>Sun, 11 May 2025 12:16:53 +0000</pubDate></item><item><title>JDBC</title><link>https://xxxyjade17.github.io/post/JDBC.html</link><description># JDBC是什么
 JDBC（Java DataBase Connectivity）使用 Java 语言操作关系型数据库的一套 API
 # 导入依赖
 ```xml
