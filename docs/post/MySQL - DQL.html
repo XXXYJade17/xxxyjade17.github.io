@@ -12,89 +12,85 @@
     </script>
 <meta name="description" content="# DQL
 
-## 条件查询:
-### select 字段表 from 表名 where 条件列表;
-### 条件列表
-- and  &&  :  与
-- or  ||  :  或
-- not  !  :  非
-- is null  :  是否空
-- <>  !=  :  不等
-- between  __  and  __  : 之间
-- in( __ , __ , ... ) : 满足条件
-- like '_%'  : 模糊匹配   _单个字符   %任意字符
+## 条件查询 :  
+  - **语法 :**  ```select 字段表 from 表名 where 条件列表```
+  - **条件列表**
+    **and  &&  :  与**
+    **or  ||  :  或**
+    **not  !  :  非**
+    **is null  :  是否空**
+    **<>  !=  :  不等**
+    **between  __  and  __  : 之间**
+    **in( __ , __ , ... ) : 满足条件**
+    **like '_%'  : 模糊匹配   _单个字符   %任意字符**
 ***
 ## 聚合函数
-- count( )  :  统计行数
-- avg( )  :  平均值
-- max( )  :  最大值
-- min( )  :  最小值
-- sum( )  :  求和
+  **count( )  : 统计行数**
+  **avg( )  : 平均值**
+  **max( )  : 最大值**
+  **min( )  : 最小值**
+  **sum( )  : 求和**
 ***
 ## 分组查询
-### select 字段表 from 表名 group by 字段表 having 筛选条件;
-### 执行顺序 : where > 聚合函数 > having
+  - **语法 :**  ```select 字段表 from 表名 group by 字段表 having 筛选条件```
+  - **执行顺序 :**  **where > 聚合函数 > having**
 ***
 ## 排序查询 ( 默认升序 ) 
-### 降序查询 : 
-### select 字段表 from 表名 order by 字段表 desc;
-### 升序查询 : 
-### select 字段表 from 表名 order by 字段表 asc;
+  - **降序查询 :**  ```select 字段表 from 表名 order by 字段表 desc```
+  - **升序查询 :**  ```select 字段表 from 表名 order by 字段表 asc```
 ***
 ## 分页查询
-### select 字段表 from 表名 limit 起始索引,查询记录数;
-### 起始索引默认为0
+  - **语法 :**  ```select 字段表 from 表名 limit 起始索引,查询记录数```
+  - **起始索引默认为0**
 ***
 ## DQL执行顺序
-- select        4      
-- from         1        
-- where       2        
-- group by  ____  having      3       
-- order by   5        
-- limit          6        。">
+   **4. select**      
+   **1. from**       
+   **2. where**      
+   **3. group by  ____  having**       
+   **5. order by**        
+   **6. limit**        。">
 <meta property="og:title" content="MySQL - DQL">
 <meta property="og:description" content="# DQL
 
-## 条件查询:
-### select 字段表 from 表名 where 条件列表;
-### 条件列表
-- and  &&  :  与
-- or  ||  :  或
-- not  !  :  非
-- is null  :  是否空
-- <>  !=  :  不等
-- between  __  and  __  : 之间
-- in( __ , __ , ... ) : 满足条件
-- like '_%'  : 模糊匹配   _单个字符   %任意字符
+## 条件查询 :  
+  - **语法 :**  ```select 字段表 from 表名 where 条件列表```
+  - **条件列表**
+    **and  &&  :  与**
+    **or  ||  :  或**
+    **not  !  :  非**
+    **is null  :  是否空**
+    **<>  !=  :  不等**
+    **between  __  and  __  : 之间**
+    **in( __ , __ , ... ) : 满足条件**
+    **like '_%'  : 模糊匹配   _单个字符   %任意字符**
 ***
 ## 聚合函数
-- count( )  :  统计行数
-- avg( )  :  平均值
-- max( )  :  最大值
-- min( )  :  最小值
-- sum( )  :  求和
+  **count( )  : 统计行数**
+  **avg( )  : 平均值**
+  **max( )  : 最大值**
+  **min( )  : 最小值**
+  **sum( )  : 求和**
 ***
 ## 分组查询
-### select 字段表 from 表名 group by 字段表 having 筛选条件;
-### 执行顺序 : where > 聚合函数 > having
+  - **语法 :**  ```select 字段表 from 表名 group by 字段表 having 筛选条件```
+  - **执行顺序 :**  **where > 聚合函数 > having**
 ***
 ## 排序查询 ( 默认升序 ) 
-### 降序查询 : 
-### select 字段表 from 表名 order by 字段表 desc;
-### 升序查询 : 
-### select 字段表 from 表名 order by 字段表 asc;
+  - **降序查询 :**  ```select 字段表 from 表名 order by 字段表 desc```
+  - **升序查询 :**  ```select 字段表 from 表名 order by 字段表 asc```
 ***
 ## 分页查询
-### select 字段表 from 表名 limit 起始索引,查询记录数;
-### 起始索引默认为0
+  - **语法 :**  ```select 字段表 from 表名 limit 起始索引,查询记录数```
+  - **起始索引默认为0**
 ***
 ## DQL执行顺序
-- select        4      
-- from         1        
-- where       2        
-- group by  ____  having      3       
-- order by   5        
-- limit          6        。">
+   **4. select**      
+   **1. from**       
+   **2. where**      
+   **3. group by  ____  having**       
+   **5. order by**        
+   **6. limit**        。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://xxxyjade17.github.io/post/MySQL%20-%20DQL.html">
 <meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
@@ -156,52 +152,52 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>DQL</h1>
-<h2>条件查询:</h2>
-<h3>select 字段表 from 表名 where 条件列表;</h3>
-<h3>条件列表</h3>
+<h2>条件查询 :</h2>
 <ul>
-<li>and  &amp;&amp;  :  与</li>
-<li>or  ||  :  或</li>
-<li>not  !  :  非</li>
-<li>is null  :  是否空</li>
-<li>&lt;&gt;  !=  :  不等</li>
-<li>between  __  and  __  : 之间</li>
-<li>in( __ , __ , ... ) : 满足条件</li>
-<li>like '_%'  : 模糊匹配   _单个字符   %任意字符</li>
+<li><strong>语法 :</strong>  <code class="notranslate">select 字段表 from 表名 where 条件列表</code></li>
+<li><strong>条件列表</strong><br>
+<strong>and  &amp;&amp;  :  与</strong><br>
+<strong>or  ||  :  或</strong><br>
+<strong>not  !  :  非</strong><br>
+<strong>is null  :  是否空</strong><br>
+<strong>&lt;&gt;  !=  :  不等</strong><br>
+<strong>between  __  and  __  : 之间</strong><br>
+<strong>in( __ , __ , ... ) : 满足条件</strong><br>
+<strong>like '_%'  : 模糊匹配   _单个字符   %任意字符</strong></li>
 </ul>
 <hr>
 <h2>聚合函数</h2>
-<ul>
-<li>count( )  :  统计行数</li>
-<li>avg( )  :  平均值</li>
-<li>max( )  :  最大值</li>
-<li>min( )  :  最小值</li>
-<li>sum( )  :  求和</li>
-</ul>
+<p><strong>count( )  : 统计行数</strong><br>
+<strong>avg( )  : 平均值</strong><br>
+<strong>max( )  : 最大值</strong><br>
+<strong>min( )  : 最小值</strong><br>
+<strong>sum( )  : 求和</strong></p>
 <hr>
 <h2>分组查询</h2>
-<h3>select 字段表 from 表名 group by 字段表 having 筛选条件;</h3>
-<h3>执行顺序 : where &gt; 聚合函数 &gt; having</h3>
+<ul>
+<li><strong>语法 :</strong>  <code class="notranslate">select 字段表 from 表名 group by 字段表 having 筛选条件</code></li>
+<li><strong>执行顺序 :</strong>  <strong>where &gt; 聚合函数 &gt; having</strong></li>
+</ul>
 <hr>
 <h2>排序查询 ( 默认升序 )</h2>
-<h3>降序查询 :</h3>
-<h3>select 字段表 from 表名 order by 字段表 desc;</h3>
-<h3>升序查询 :</h3>
-<h3>select 字段表 from 表名 order by 字段表 asc;</h3>
+<ul>
+<li><strong>降序查询 :</strong>  <code class="notranslate">select 字段表 from 表名 order by 字段表 desc</code></li>
+<li><strong>升序查询 :</strong>  <code class="notranslate">select 字段表 from 表名 order by 字段表 asc</code></li>
+</ul>
 <hr>
 <h2>分页查询</h2>
-<h3>select 字段表 from 表名 limit 起始索引,查询记录数;</h3>
-<h3>起始索引默认为0</h3>
+<ul>
+<li><strong>语法 :</strong>  <code class="notranslate">select 字段表 from 表名 limit 起始索引,查询记录数</code></li>
+<li><strong>起始索引默认为0</strong></li>
+</ul>
 <hr>
 <h2>DQL执行顺序</h2>
-<ul>
-<li>select        4</li>
-<li>from         1</li>
-<li>where       2</li>
-<li>group by  ____  having      3</li>
-<li>order by   5</li>
-<li>limit          6</li>
-</ul></div>
+<p><strong>4. select</strong><br>
+<strong>1. from</strong><br>
+<strong>2. where</strong><br>
+<strong>3. group by  ____  having</strong><br>
+<strong>5. order by</strong><br>
+<strong>6. limit</strong></p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
