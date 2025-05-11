@@ -1,5 +1,119 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Sun, 11 May 2025 12:17:18 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>MySQL - DQL</title><link>https://xxxyjade17.github.io/post/MySQL%20-%20DQL.html</link><description># DQL
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Sun, 11 May 2025 14:16:01 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>MySQL - DCL</title><link>https://xxxyjade17.github.io/post/MySQL%20-%20DCL.html</link><description># DCL
+## 管理用户
+- ### 查询用户
+```
+use mysql;
+select * from user;
+```
+- ### 创建用户
+```
+create user '用户名@主机名' identified by '密码';
+```
+- ### 修改用户密码
+```
+alter user '用户名@主机名' identified with '原密码' by '新密码';
+```
+- ### 删除用户
+```
+drop user '用户名@主机名';
+```
+***
+## 权限控制
+- ### 查询权限
+```
+show grants for '用户名@主机名';
+```
+- ### 授予权限
+```
+grant 权限 on 数据库名  表名 to '用户名@主机名';
+```
+- ### 撤销权限
+```
+revoke 权限 on 数据库名  表名 from '用户名@主机名';
+```
+- ### 权限
+  **1. 所有权限  :  all, all privileges**
+  **2. 查询数据  :  select**
+  **3.  插入数据  :  insert**
+  **4. 修改数据  :  update**
+  **5. 删除数据  :  delete**
+  **6. 修改表  :  alter**
+  **7. 删除数据库 / 表 / 视图  :  drop**
+  **8. 创建数据库 / 表  :  create**
+***
+## 函数
+- ### 字符串函数
+  **1. 字符串拼接 :**  ```concat(s1,s2,...); ```
+  **2. 转小写 :**  ```lower(str)```
+  **3. 转大写 :**  ```upper(str)```
+  **4. 在str左侧以pad填充，至长度为n :**  ```lpad(str,n,pad)```
+  **5. 在str右侧以pad填充，至长度为n :**  ```rpad(str,n,pad)```
+  **6. 去除两侧空格 :**  ```trim(str)```
+  **7. 从字符串的start开始截取len个字符 :**  ```substring(str,start,len)```
+- ### 数值函数
+  **1. 向上取整 :**  ```ceil(num)```
+  **2. 向下取整  :**  ```floor( num )```
+  **3. x/y的模 :**  ```mod(x/y)```
+  **4. 0~1随机数 :**  ```rand( )```
+  **5. 四舍五入,保留y位小数 :**  ```round(x,y)```
+- ### 日期函数
+  **1. 当前日期 :**  ```curdate( )```
+  **2. 当前时间 :**  ```curtime( )```
+  **3. 当前日期和时间 :**  ```now()```
+  **4. 当前年份 :**  ```year(date)```
+  **5. 当前月份 :**  ```month(date)```
+  **6. 当前日 :**  ```day(date)```
+  **7. 在当前日期的type(年月日)加value :**  ```date_add(date,interval value type)```
+  **8. 两个之间差的天数 :**  ```detediff(date1,date2)```
+- ### 流程控制函数
+  1. ```if(value,t,f)```
+解释  :  value真返t假返f
+  2. ```ifnull(value1,value2)```
+解释  :  value1不为null返value1，为null返value2
+  3. ```case value when value1 then ans1 when value2 then ans2 ... else default end```
+解释  :  value等于value1返回ans1,等于value2返回ans2,...,否则返回default
+***
+## 约束
+- ### 示例
+```
+create table user(
+    id int primary key  auto_increment comment,
+    name varchar(10) not null unique ,
+    age int check ( age&gt;0 &amp;&amp; age&lt;=120 ),
+    status char(1) default 1,
+    gender char(1)
+)
+```
+- ### 约束种类
+  **not null : 非空约束**
+  **unique : 唯一约束**
+  **primary key : 主键约束**
+  **default : 默认约束**
+  **check(条件) : 检查约束**
+  **foreign key : 外键约束**
+***
+## 约束外键
+- ### 加入外键
+```
+create table 表名(
+    字段名 数据类型
+     ......
+     constraint 外键名 foreign key(外键字段名) references 主表(列名)
+);
+alter table 表名 
+add constraint 外键名 
+foreign key(外键字段名) 
+references 主表(列名)
+on delete 删除行为
+on update 更新行为;
+```
+- ### 删除外键
+```
+alter table 表名 drop  foreign key 外键名
+```
+- ### 外键删除/更新的行为及其含义
+  **no action  :  当在父表中删除 / 更新对应记录时，首先检查该记录是否有对应外键，如果有则不允许删除 / 更新。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/MySQL%20-%20DCL.html</guid><pubDate>Sun, 11 May 2025 14:15:37 +0000</pubDate></item><item><title>MySQL - DQL</title><link>https://xxxyjade17.github.io/post/MySQL%20-%20DQL.html</link><description># DQL
 
 ## 条件查询:
 ### select 字段表 from 表名 where 条件列表;
