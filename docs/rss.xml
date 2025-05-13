@@ -1,5 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Mon, 12 May 2025 09:53:57 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>MyBatis - 动态SQL</title><link>https://xxxyjade17.github.io/post/MyBatis%20-%20-dong-tai-SQL.html</link><description># 动态SQL的概念与应用
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Tue, 13 May 2025 08:36:47 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>Spring - 事务管理</title><link>https://xxxyjade17.github.io/post/Spring%20-%20-shi-wu-guan-li.html</link><description># 作用
+### 在java中使用MySQL事务
+***
+# 基础用法
+### 在业务层 (Service) 的类, 接口, 方法上使用 ```@Transactioal``` 注解
+### 将当前方法交给 spring 进行事务管理，方法执行前，开启事务；成功执行完毕，提交事务；出现异常，回滚事务
+***
+# 设置回滚
+ ### rollbackFor = {异常.class} : 设置检测异常, 进行回滚操作
+***
+# 事务传播
+ ### propagation = 行为
+ ### 行为:
+    1. REQUIRED | 【默认值】需要事务，有则加入，无则创建新事务
+    2. REQUIRES_NEW | 需要新事务，无论有无，总是创建新事务（加粗红色强调）
+    3. SUPPORTS | 支持事务，有则加入，无则在无事务状态中运行（加粗红色强调）
+    4. NOT_SUPPORTED | 不支持事务，在无事务状态下运行，如果当前存在已有事务，则挂起当前事务
+    5. MANDATORY | 必须有事务，否则抛异常
+    6. NEVER | 必须没事务，否则抛异常
+。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/Spring%20-%20-shi-wu-guan-li.html</guid><pubDate>Tue, 13 May 2025 08:36:22 +0000</pubDate></item><item><title>MyBatis - 动态SQL</title><link>https://xxxyjade17.github.io/post/MyBatis%20-%20-dong-tai-SQL.html</link><description># 动态SQL的概念与应用
 动态SQL是一种根据不同的条件动态生成SQL语句的技术。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/MyBatis%20-%20-dong-tai-SQL.html</guid><pubDate>Mon, 12 May 2025 09:53:32 +0000</pubDate></item><item><title>MyBatis</title><link>https://xxxyjade17.github.io/post/MyBatis.html</link><description># 什么是MyBatis
 **[MyBatis](https://mybatis.net.cn/getting-started.html)** 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/MyBatis.html</guid><pubDate>Mon, 12 May 2025 09:47:56 +0000</pubDate></item><item><title>PageHelper</title><link>https://xxxyjade17.github.io/post/PageHelper.html</link><description># 什么是PageHelper
 **PageHelper是第三方提供在 Mybatis 框架中实现分页的插件, 用来简化分页操作, 提高开发效率**
