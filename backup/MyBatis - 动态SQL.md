@@ -22,14 +22,14 @@
 ***
 # FOREACH
 ```
-insert into emp_expr(emp_id, begin, end, company, job) values
-        <foreach collection="exprList" item="expr" separator=",">
-            (#{expr.empId},#{expr.begin},#{expr.end},#{expr.company},#{expr.job})
+delete from emp where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
         </foreach>
 ```
   ### **属性说明**
-  #### 1. collection : **集合名称**
-  #### 2. item: **集合遍历出来的元素**
+  #### 1. collection : **需要遍历的集合名称**
+  #### 2. item: **命名集合遍历出来的元素**
   #### 3. separator : **每一次遍历结束连接的分隔符**
   #### 4. open: **遍历开始前拼接的字段**
   #### 5. close : **遍历开始后拼接的字段**

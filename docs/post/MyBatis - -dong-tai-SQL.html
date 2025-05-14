@@ -106,14 +106,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>根据查询条件, 来生成where关键字, 并会自动去除条件前面多余的and或or</p>
 <hr>
 <h1>FOREACH</h1>
-<pre class="notranslate"><code class="notranslate">insert into emp_expr(emp_id, begin, end, company, job) values
-        &lt;foreach collection="exprList" item="expr" separator=","&gt;
-            (#{expr.empId},#{expr.begin},#{expr.end},#{expr.company},#{expr.job})
+<pre class="notranslate"><code class="notranslate">delete from emp where id in
+        &lt;foreach collection="ids" item="id" separator="," open="(" close=")"&gt;
+            #{id}
         &lt;/foreach&gt;
 </code></pre>
 <h3><strong>属性说明</strong></h3>
-<h4>1. collection : <strong>集合名称</strong></h4>
-<h4>2. item: <strong>集合遍历出来的元素</strong></h4>
+<h4>1. collection : <strong>需要遍历的集合名称</strong></h4>
+<h4>2. item: <strong>命名集合遍历出来的元素</strong></h4>
 <h4>3. separator : <strong>每一次遍历结束连接的分隔符</strong></h4>
 <h4>4. open: <strong>遍历开始前拼接的字段</strong></h4>
 <h4>5. close : <strong>遍历开始后拼接的字段</strong></h4>
