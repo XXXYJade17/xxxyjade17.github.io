@@ -1,5 +1,54 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Wed, 14 May 2025 11:48:14 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>Spring - 全局异常处理器</title><link>https://xxxyjade17.github.io/post/Spring%20-%20-quan-ju-yi-chang-chu-li-qi.html</link><description>## 如何定义一个全局异常处理类
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Wed, 14 May 2025 12:23:43 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>MyBatis - 结果映射</title><link>https://xxxyjade17.github.io/post/MyBatis%20-%20-jie-guo-ying-she.html</link><description>### 查询部分
+```
+&lt;select id='getById' resultMap='empResultMap'&gt;
+        select
+            e.* ,
+            ee.id ee_id ,
+            ee.emp_id ee_empid ,
+            ee.begin ee_begin ,
+            ee.end ee_end ,
+            ee.company ee_company ,
+            ee.job ee_job
+        from emp e left join emp_expr ee on e.id = ee.emp_id
+        where e.id = #{id}
+&lt;/select&gt;
+```
+  **查询结果将通过empResultMap进行映射处理**
+***
+### 结果映射部分
+```
+&lt;resultMap id='empResultMap' type='com.xxxyjade17.pojo.Emp'&gt;
+    &lt;id column='id' property='id' /&gt;
+    &lt;result column='username' property='username' /&gt;
+    &lt;result column='password' property='password' /&gt;
+    &lt;result column='name' property='name' /&gt;
+    &lt;result column='gender' property='gender' /&gt;
+    &lt;result column='phone' property='phone' /&gt;
+    &lt;result column='job' property='job' /&gt;
+    &lt;result column='salary' property='salary' /&gt;
+    &lt;result column='image' property='image' /&gt;
+    &lt;result column='entryDate' property='entryDate' /&gt;
+    &lt;result column='deptId' property='deptId' /&gt;
+    &lt;result column='createTime' property='createTime' /&gt;
+    &lt;result column='updateTime' property='updateTime' /&gt;
+    &lt;collection property='exprList' ofType='com.xxxyjade17.pojo.EmpExpr'&gt;
+        &lt;id column='ee_id' property='id' /&gt;
+        &lt;result column='ee_company' property='company' /&gt;
+        &lt;result column='ee_job' property='job' /&gt;
+        &lt;result column='ee_begin' property='begin' /&gt;
+        &lt;result column='ee_end' property='end' /&gt;
+        &lt;result column='ee_empId' property='empId' /&gt;
+    &lt;/collection&gt;
+&lt;/resultMap&gt;
+```
+**主映射配置：**
+  - type='' : 指定映射的目标 Java 类
+  - column='' , property='' : 将查询结果的列映射到Emp类的属性
+  - collection标签 : 用于处理一对多关系，将多条映射到类的属性上
+  - ofType='' : 指定集合元素的类型
+  - id标签 : 映射表的主键列, 提高缓存效率，确保对象唯一性
+  - result标签 : 映射普通数据列, 无特殊需求，只需简单映射。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/MyBatis%20-%20-jie-guo-ying-she.html</guid><pubDate>Wed, 14 May 2025 12:22:59 +0000</pubDate></item><item><title>Spring - 全局异常处理器</title><link>https://xxxyjade17.github.io/post/Spring%20-%20-quan-ju-yi-chang-chu-li-qi.html</link><description>## 如何定义一个全局异常处理类
 ```
 @Slf4j
 @RestControllerAdvice
