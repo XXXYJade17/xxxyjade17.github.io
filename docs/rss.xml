@@ -1,5 +1,39 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Wed, 14 May 2025 12:23:43 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>MyBatis - 结果映射</title><link>https://xxxyjade17.github.io/post/MyBatis%20-%20-jie-guo-ying-she.html</link><description>### 查询部分
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Thu, 15 May 2025 05:30:32 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>MybatisPlus</title><link>https://xxxyjade17.github.io/post/MybatisPlus.html</link><description>## 使用 MybatisPlus 的基本步骤：
+- ### 引入 MybatisPlus 依赖，代替 Mybatis 依赖
+  ```
+  &lt;dependency&gt;
+      &lt;groupId&gt;com.baomidou&lt;/groupId&gt;
+      &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;
+      &lt;version&gt;3.5.3.1&lt;/version&gt;
+  &lt;/dependency&gt;
+   ```
+- ### 定义 Mapper 接口并继承 BaseMapper
+  ```
+  public interface UserMapper extends BaseMapper&lt;User&gt; {
+  }
+  ```
+***
+## MybatisPlus 是如何获取实现 CRUD 的数据库表信息的？
+  - 默认以类名驼峰转下划线作为表名
+  - 默认把名为 id 的字段作为主键
+  - 默认把变量名驼峰转下划线作为表的字段名
+***
+## MybatisPlus 的常用注解有哪些？
+  - @TableName : 指定表名称及全局配置
+  - @TableId : 指定 id 字段及相关配置
+  - @TableField : 指定普通字段及相关配置
+***
+## IdType 的常见类型有哪些？
+  - AUTO : 数据库自增长
+  - INPUT : 通过 set 方法自行输入
+  - ASSIGN_ID : 分配 ID，接口 IdentifierGenerator 的方法 nextId 来生成 id，默认实现类为 DefaultIdentifierGenerator 雪花算法
+***
+## 使用 @TableField 的常见场景是？
+  - 成员变量名与数据库字段名不一致
+  - 成员变量名以 is 开头，且是布尔值
+  - 成员变量名与数据库关键字冲突
+  - 成员变量不是数据库字段。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/MybatisPlus.html</guid><pubDate>Thu, 15 May 2025 05:30:09 +0000</pubDate></item><item><title>MyBatis - 结果映射</title><link>https://xxxyjade17.github.io/post/MyBatis%20-%20-jie-guo-ying-she.html</link><description>### 查询部分
 ```
 &lt;select id='getById' resultMap='empResultMap'&gt;
         select
