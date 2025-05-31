@@ -41,7 +41,7 @@ Aspect Oriented Programming（面向切面编程、面向方面编程），可�
   - 目标方法后的通知方法：数字小的后执行
 ***
 ## 切入点表达式
-### 1. @execution:
+### 1. execution:
   -  execution主要根据方法的返回值、包名、类名、方法名、方法参数等信息来匹配，语法为:
   execution ( **访问修饰符**  返回值类型  **包名.类名** .方法名(方法参数) **throws 异常** )  
   -  其中加粗的部分可以省略 
@@ -53,4 +53,31 @@ Aspect Oriented Programming（面向切面编程、面向方面编程），可�
   ``` execution(* com.*.service.*.update*(*)) ``` 
     2、.. ：多个连续的任意符号，可以匹配任意层级的包、或任意类型、任意个数的参数
   ``` execution(* com.xxxyjade17..DeptService.*(..)) ``` 
-### 2. @annotation
+### 2. @Annotation
+  - 定义注解
+```
+@Target(ElementType.METHOD) // 此注解可用于方法
+@Retention(RetentionPolicy.RUNTIME) // 在运行时保留此注解
+public @interface LogOperation {
+}
+```
+  - 切面类中标记切入点
+```
+@Before("@annotation(com.itheima.anno.LogOperation)")
+public void before(){
+    log.info("MyAspect -> before ...");
+}
+```
+  - 在Service层加上注解
+```
+@LogOperation
+@Override
+public void delete(Integer id) {
+    deptMapper.delete(id);
+}
+```
+### 3, @Pointcut切入点
+  ```
+@Pointcut( 切入点表达式)
+public void pt(){}
+  ```

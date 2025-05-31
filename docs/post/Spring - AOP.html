@@ -163,7 +163,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </ul>
 <hr>
 <h2>切入点表达式</h2>
-<h3>1. <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/execution/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/execution">@execution</a>:</h3>
+<h3>1. execution:</h3>
 <ul>
 <li>execution主要根据方法的返回值、包名、类名、方法名、方法参数等信息来匹配，语法为:<br>
 execution ( <strong>访问修饰符</strong>  返回值类型  <strong>包名.类名</strong> .方法名(方法参数) <strong>throws 异常</strong> )</li>
@@ -177,7 +177,36 @@ execution ( <strong>访问修饰符</strong>  返回值类型  <strong>包名.�
 2、.. ：多个连续的任意符号，可以匹配任意层级的包、或任意类型、任意个数的参数<br>
 <code class="notranslate">execution(* com.xxxyjade17..DeptService.*(..))</code></li>
 </ul>
-<h3>2. <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/annotation/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/annotation">@annotation</a></h3></div>
+<h3>2. <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/annotation/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/annotation">@annotation</a></h3>
+<ul>
+<li>定义注解</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">@Target(ElementType.METHOD) // 此注解可用于方法
+@Retention(RetentionPolicy.RUNTIME) // 在运行时保留此注解
+public @interface LogOperation {
+}
+</code></pre>
+<ul>
+<li>切面类中标记切入点</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">@Before("@annotation(com.itheima.anno.LogOperation)")
+public void before(){
+    log.info("MyAspect -&gt; before ...");
+}
+</code></pre>
+<ul>
+<li>在Service层加上注解</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">@LogOperation
+@Override
+public void delete(Integer id) {
+    deptMapper.delete(id);
+}
+</code></pre>
+<h3>3, <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/pointcut/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/pointcut">@pointcut</a>切入点</h3>
+<pre class="notranslate"><code class="notranslate">@Pointcut( 切入点表达式)
+public void pt(){}
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
