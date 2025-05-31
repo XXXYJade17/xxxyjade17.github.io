@@ -206,6 +206,34 @@ public void delete(Integer id) {
 <h3>3, <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/pointcut/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/pointcut">@pointcut</a>切入点</h3>
 <pre class="notranslate"><code class="notranslate">@Pointcut( 切入点表达式)
 public void pt(){}
+</code></pre>
+<hr>
+<h2>Joinpoint连接点</h2>
+<ul>
+<li>对于 <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/around/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/around">@around</a> 通知，获取连接点信息只能使用 ProceedingJoinPoint</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">@Around("execution(* com.itheima.service.DeptService.*(..))")
+public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+    String className = joinPoint.getTarget().getClass().getName(); // 获取目标类名
+    Signature signature = joinPoint.getSignature(); // 获取目标方法签名
+    String methodName = joinPoint.getSign
+    Object[] args = joinPoint.getArgs(); 
+    Object res = joinPoint.proceed(); // 
+    return res;
+}
+</code></pre>
+<ul>
+<li>对于其它四种通知，获取连接点信息只能使用 JoinPoint ，它是 ProceedingJoinPoint 的父类型</li>
+</ul>
+<pre class="notranslate"><code class="notranslate">@Before("execution(* com.itheima.service.DeptService.*(..))")
+public void before(JoinPoint joinPoint) {
+    String className = joinPoint.getTarget().getClass().getName(); // 获取目标类名
+
+    Signature signature = joinPoint.getSignature(); // 获取目标方法签名
+    String methodName = joinPoint.getSignature().getName(); // 获取目标方法名
+
+    Object[] args = joinPoint.getArgs(); // 获取目标方法运行参数
+}
 </code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 

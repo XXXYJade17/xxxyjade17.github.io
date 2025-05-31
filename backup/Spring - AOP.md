@@ -77,7 +77,33 @@ public void delete(Integer id) {
 }
 ```
 ### 3, @Pointcut切入点
-  ```
+```
 @Pointcut( 切入点表达式)
 public void pt(){}
-  ```
+```
+***
+## Joinpoint连接点
+  - 对于 @Around 通知，获取连接点信息只能使用 ProceedingJoinPoint
+```
+@Around("execution(* com.itheima.service.DeptService.*(..))")
+public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+    String className = joinPoint.getTarget().getClass().getName(); // 获取目标类名
+    Signature signature = joinPoint.getSignature(); // 获取目标方法签名
+    String methodName = joinPoint.getSign
+    Object[] args = joinPoint.getArgs(); 
+    Object res = joinPoint.proceed(); // 
+    return res;
+}
+```
+  - 对于其它四种通知，获取连接点信息只能使用 JoinPoint ，它是 ProceedingJoinPoint 的父类型
+```
+@Before("execution(* com.itheima.service.DeptService.*(..))")
+public void before(JoinPoint joinPoint) {
+    String className = joinPoint.getTarget().getClass().getName(); // 获取目标类名
+
+    Signature signature = joinPoint.getSignature(); // 获取目标方法签名
+    String methodName = joinPoint.getSignature().getName(); // 获取目标方法名
+
+    Object[] args = joinPoint.getArgs(); // 获取目标方法运行参数
+}
+```
