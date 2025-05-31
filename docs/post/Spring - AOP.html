@@ -161,7 +161,23 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </ul>
 </li>
 </ul>
-<hr></div>
+<hr>
+<h2>切入点表达式</h2>
+<h3>1. <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/execution/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/execution">@execution</a>:</h3>
+<ul>
+<li>execution主要根据方法的返回值、包名、类名、方法名、方法参数等信息来匹配，语法为:<br>
+execution ( <strong>访问修饰符</strong>  返回值类型  <strong>包名.类名</strong> .方法名(方法参数) <strong>throws 异常</strong> )</li>
+<li>其中加粗的部分可以省略<br>
+1、访问修饰符：可省略（比如：public、protected）<br>
+2、包名.类名：可省略<br>
+3、throws 异常：可省略（注意是方法上声明抛出的异常，不是实际抛出的异常）</li>
+<li>可以使用通配符描述切入点<br>
+1、* ： 单个独立的任意符号，可以通配任意返回值、包名、类名、方法名、任意类型的一个参数，也可以通配包、类、方法名的一部分<br>
+<code class="notranslate">execution(* com.*.service.*.update*(*))</code><br>
+2、.. ：多个连续的任意符号，可以匹配任意层级的包、或任意类型、任意个数的参数<br>
+<code class="notranslate">execution(* com.xxxyjade17..DeptService.*(..))</code></li>
+</ul>
+<h3>2. <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/annotation/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/annotation">@annotation</a></h3></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
