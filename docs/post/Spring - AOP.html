@@ -140,7 +140,28 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li>
 <h4>@AfterThrowing ： 异常后通知，此注解标注的通知方法发生异常后执行</h4>
 </li>
-</ul></div>
+</ul>
+<hr>
+<h2>通知顺序</h2>
+<p>当有多个切面的切入点都匹配到了目标方法，目标方法运行时，多个通知方法都会被执行。</p>
+<h3>执行顺序：</h3>
+<ul>
+<li>
+<h4>不同切面类中，默认按照切面类的类名字母排序 :</h4>
+<ul>
+<li>目标方法前的通知方法：字母排名靠前的先执行</li>
+<li>目标方法后的通知方法：字母排名靠前的后执行</li>
+</ul>
+</li>
+<li>
+<h4>用<a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/order/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/order">@order</a>(数字)加在切面类上来控制顺序 :</h4>
+<ul>
+<li>目标方法前的通知方法：数字小的先执行</li>
+<li>目标方法后的通知方法：数字小的后执行</li>
+</ul>
+</li>
+</ul>
+<hr></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
