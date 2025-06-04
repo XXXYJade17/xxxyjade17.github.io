@@ -1,5 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Sat, 31 May 2025 02:20:17 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>Spring - AOP</title><link>https://xxxyjade17.github.io/post/Spring%20-%20AOP.html</link><description>## 什么是AOP
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Wed, 04 Jun 2025 14:05:35 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>SSM - Spring</title><link>https://xxxyjade17.github.io/post/SSM%20-%20Spring.html</link><description>## IoC(Inversion of Control)
+- 控制反转 : 使用对象时,由**主动new产生对象**转换为**外部提供对象**
+- Spring中提供了一个IoC容器充当外部，统一管理对象的创建和初始化
+- 在IoC容器中被管理的对象统称为Bean
+- 示例 :
+  获取IoC容器 : ``` ApplicationContext ctx = new ClassPathXmlApplicationContext('applicationContext.xml'); ```
+  获取bean : ``` BookDao bookDao = (BookDao) ctx.getBean('bookDao'); ```
+***
+## Bean
+- #### 一、Bean 基本配置
+  1. 别名（name）
+    可定义多个别名，用逗号 (,)、分号 (;) 或空格分隔。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/SSM%20-%20Spring.html</guid><pubDate>Wed, 04 Jun 2025 14:05:01 +0000</pubDate></item><item><title>Spring - AOP</title><link>https://xxxyjade17.github.io/post/Spring%20-%20AOP.html</link><description>## 什么是AOP
 Aspect Oriented Programming（面向切面编程、面向方面编程），可简单理解为就是面向特定方法编程。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/Spring%20-%20AOP.html</guid><pubDate>Sat, 31 May 2025 02:19:50 +0000</pubDate></item><item><title>Interceptor拦截器</title><link>https://xxxyjade17.github.io/post/Interceptor-lan-jie-qi.html</link><description>## Interceptor
 - 概念：是一种动态拦截方法调用的机制，类似于过滤器。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/Interceptor-lan-jie-qi.html</guid><pubDate>Fri, 30 May 2025 11:57:34 +0000</pubDate></item><item><title>Filter过滤器</title><link>https://xxxyjade17.github.io/post/Filter-guo-lv-qi.html</link><description>## Filter
   - 概念 : JavaWeb 三大组件（Servlet、Filter、Listener）之一。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/Filter-guo-lv-qi.html</guid><pubDate>Thu, 29 May 2025 04:46:06 +0000</pubDate></item><item><title>会话技术</title><link>https://xxxyjade17.github.io/post/hui-hua-ji-shu.html</link><description># Cookie
