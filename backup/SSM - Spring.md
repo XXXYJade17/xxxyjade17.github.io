@@ -89,3 +89,109 @@
      ```
 ***
 ## DI(Dependecy Injection)
+- 依赖注入：在IoC中建立bean和bean之间的依赖关系的过程
+- 注入方式
+  #### Setter 注入
+    1. 定义变量
+        ```java
+        private BookDao bookDao;
+        private int price;
+        ```
+    2. 提供 Set 方法
+        ```java
+        public void setBookDao(BookDao bookDao) {
+            this.bookDao = bookDao;
+        }
+        public void setPrice(int price) {
+            this.price = price;
+        }
+        ```
+    3. XML 配置
+        ```xml
+        <bean id="bookService" class="com.xxxyjade17.service.impl.BookServiceImpl">
+            <property name="bookDao" ref="bookDao"/>  <!-- 引用其他Bean -->
+            <property name="price" value="10"/>       <!-- 注入基本值 -->
+        </bean>
+        ```
+  #### 构造器注入
+    1. 定义带参构造器
+        ```java
+        public BookServiceImpl(BookDao bookDao, int price) {
+            this.bookDao = bookDao;
+            this.price = price;
+        }
+        ```
+    2. XML 配置（三种方式）
+        ```xml
+        <bean id="bookService" class="com.xxxyjade17.service.impl.BookServiceImpl">
+            <!-- 方式1：按参数名匹配 -->
+            <constructor-arg name="bookDao" ref="bookDao"/>
+            <constructor-arg name="price" value="10"/>
+    
+            <!-- 方式2：按参数索引匹配（从0开始） -->
+            <constructor-arg index="0" ref="bookDao"/>
+            <constructor-arg index="1" value="10"/>
+    
+            <!-- 方式3：按参数类型匹配 -->
+            <constructor-arg type="com.xxxyjade17.dao.BookDao" ref="bookDao"/>
+            <constructor-arg type="int" value="10"/>
+        </bean>
+        ```
+- 集合注入
+  1. 数组（Array）
+      ```xml
+      <property name="array">
+          <array>
+              <value>100</value>
+              <value>200</value>
+              <value>300</value>
+          </array>
+      </property>
+      ```
+  2. List 集合
+      ```xml
+      <property name="list">
+          <list>
+              <value>itcast</value>
+              <value>itheima</value>
+              <value>boxuegu</value>
+          </list>
+      </property>
+      ```
+  3. Set 集合
+      ```xml
+      <property name="set">
+          <set>
+              <value>itcast</value>
+              <value>itheima</value>
+              <value>boxuegu</value> <!-- 重复元素会被自动去重 -->
+          </set>
+      </property>
+      ```
+  4. Map 集合
+      ```xml
+      <property name="map">
+          <map>
+              <entry key="country" value="china"/>
+              <entry key="province" value="henan"/>
+              <entry key="city" value="kaifeng"/>
+          </map>
+      </property>
+      ```
+  5. Properties 集合
+      ```xml
+      <property name="properties">
+          <props>
+              <prop key="country">china</prop>
+              <prop key="province">henan</prop>
+              <prop key="city">kaifeng</prop>
+          </props>
+      </property>
+      ```
+- 复杂对象注入
+  若集合元素是其他 Bean，可替换``` <value> ```为``` <ref bean="beanId"> ```
+    ```xml
+    <list>
+        <ref bean="userService"/> <!-- 引用容器中 id 为 userService 的 Bean -->
+    </list>
+    ```

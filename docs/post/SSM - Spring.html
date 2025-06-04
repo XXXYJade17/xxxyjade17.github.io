@@ -205,7 +205,112 @@ Bean 准备就绪后，供应用调用： 执行业务操作</li>
 </li>
 </ul>
 <hr>
-<h2>DI(Dependecy Injection)</h2></div>
+<h2>DI(Dependecy Injection)</h2>
+<ul>
+<li>依赖注入：在IoC中建立bean和bean之间的依赖关系的过程</li>
+<li>注入方式
+<h4>Setter 注入</h4>
+<ol>
+<li>定义变量
+<div class="highlight highlight-source-java"><pre class="notranslate"><span class="pl-k">private</span> <span class="pl-smi">BookDao</span> <span class="pl-s1">bookDao</span>;
+<span class="pl-k">private</span> <span class="pl-smi">int</span> <span class="pl-s1">price</span>;</pre></div>
+</li>
+<li>提供 Set 方法
+<div class="highlight highlight-source-java"><pre class="notranslate"><span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setBookDao</span>(<span class="pl-smi">BookDao</span> <span class="pl-s1">bookDao</span>) {
+    <span class="pl-smi">this</span>.<span class="pl-s1">bookDao</span> = <span class="pl-s1">bookDao</span>;
+}
+<span class="pl-k">public</span> <span class="pl-smi">void</span> <span class="pl-en">setPrice</span>(<span class="pl-smi">int</span> <span class="pl-s1">price</span>) {
+    <span class="pl-smi">this</span>.<span class="pl-s1">price</span> = <span class="pl-s1">price</span>;
+}</pre></div>
+</li>
+<li>XML 配置
+<div class="highlight highlight-text-xml"><pre class="notranslate">&lt;<span class="pl-ent">bean</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>bookService<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>com.xxxyjade17.service.impl.BookServiceImpl<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>bookDao<span class="pl-pds">"</span></span> <span class="pl-e">ref</span>=<span class="pl-s"><span class="pl-pds">"</span>bookDao<span class="pl-pds">"</span></span>/&gt;  <span class="pl-c"><span class="pl-c">&lt;!--</span> 引用其他Bean <span class="pl-c">--&gt;</span></span>
+    &lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>price<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span>/&gt;       <span class="pl-c"><span class="pl-c">&lt;!--</span> 注入基本值 <span class="pl-c">--&gt;</span></span>
+&lt;/<span class="pl-ent">bean</span>&gt;</pre></div>
+</li>
+</ol>
+<h4>构造器注入</h4>
+<ol>
+<li>定义带参构造器
+<div class="highlight highlight-source-java"><pre class="notranslate"><span class="pl-k">public</span> <span class="pl-smi">BookServiceImpl</span><span class="pl-en"></span>(<span class="pl-smi">BookDao</span> <span class="pl-s1">bookDao</span>, <span class="pl-smi">int</span> <span class="pl-s1">price</span>) {
+    <span class="pl-smi">this</span>.<span class="pl-s1">bookDao</span> = <span class="pl-s1">bookDao</span>;
+    <span class="pl-smi">this</span>.<span class="pl-s1">price</span> = <span class="pl-s1">price</span>;
+}</pre></div>
+</li>
+<li>XML 配置（三种方式）
+<div class="highlight highlight-text-xml"><pre class="notranslate">&lt;<span class="pl-ent">bean</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>bookService<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>com.xxxyjade17.service.impl.BookServiceImpl<span class="pl-pds">"</span></span>&gt;
+    <span class="pl-c"><span class="pl-c">&lt;!--</span> 方式1：按参数名匹配 <span class="pl-c">--&gt;</span></span>
+    &lt;<span class="pl-ent">constructor-arg</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>bookDao<span class="pl-pds">"</span></span> <span class="pl-e">ref</span>=<span class="pl-s"><span class="pl-pds">"</span>bookDao<span class="pl-pds">"</span></span>/&gt;
+    &lt;<span class="pl-ent">constructor-arg</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>price<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span>/&gt;
+
+    <span class="pl-c"><span class="pl-c">&lt;!--</span> 方式2：按参数索引匹配（从0开始） <span class="pl-c">--&gt;</span></span>
+    &lt;<span class="pl-ent">constructor-arg</span> <span class="pl-e">index</span>=<span class="pl-s"><span class="pl-pds">"</span>0<span class="pl-pds">"</span></span> <span class="pl-e">ref</span>=<span class="pl-s"><span class="pl-pds">"</span>bookDao<span class="pl-pds">"</span></span>/&gt;
+    &lt;<span class="pl-ent">constructor-arg</span> <span class="pl-e">index</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span>/&gt;
+
+    <span class="pl-c"><span class="pl-c">&lt;!--</span> 方式3：按参数类型匹配 <span class="pl-c">--&gt;</span></span>
+    &lt;<span class="pl-ent">constructor-arg</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>com.xxxyjade17.dao.BookDao<span class="pl-pds">"</span></span> <span class="pl-e">ref</span>=<span class="pl-s"><span class="pl-pds">"</span>bookDao<span class="pl-pds">"</span></span>/&gt;
+    &lt;<span class="pl-ent">constructor-arg</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>int<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span>/&gt;
+&lt;/<span class="pl-ent">bean</span>&gt;</pre></div>
+</li>
+</ol>
+</li>
+<li>集合注入
+<ol>
+<li>数组（Array）
+<div class="highlight highlight-text-xml"><pre class="notranslate">&lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>array<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">array</span>&gt;
+        &lt;<span class="pl-ent">value</span>&gt;100&lt;/<span class="pl-ent">value</span>&gt;
+        &lt;<span class="pl-ent">value</span>&gt;200&lt;/<span class="pl-ent">value</span>&gt;
+        &lt;<span class="pl-ent">value</span>&gt;300&lt;/<span class="pl-ent">value</span>&gt;
+    &lt;/<span class="pl-ent">array</span>&gt;
+&lt;/<span class="pl-ent">property</span>&gt;</pre></div>
+</li>
+<li>List 集合
+<div class="highlight highlight-text-xml"><pre class="notranslate">&lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>list<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">list</span>&gt;
+        &lt;<span class="pl-ent">value</span>&gt;itcast&lt;/<span class="pl-ent">value</span>&gt;
+        &lt;<span class="pl-ent">value</span>&gt;itheima&lt;/<span class="pl-ent">value</span>&gt;
+        &lt;<span class="pl-ent">value</span>&gt;boxuegu&lt;/<span class="pl-ent">value</span>&gt;
+    &lt;/<span class="pl-ent">list</span>&gt;
+&lt;/<span class="pl-ent">property</span>&gt;</pre></div>
+</li>
+<li>Set 集合
+<div class="highlight highlight-text-xml"><pre class="notranslate">&lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>set<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">set</span>&gt;
+        &lt;<span class="pl-ent">value</span>&gt;itcast&lt;/<span class="pl-ent">value</span>&gt;
+        &lt;<span class="pl-ent">value</span>&gt;itheima&lt;/<span class="pl-ent">value</span>&gt;
+        &lt;<span class="pl-ent">value</span>&gt;boxuegu&lt;/<span class="pl-ent">value</span>&gt; <span class="pl-c"><span class="pl-c">&lt;!--</span> 重复元素会被自动去重 <span class="pl-c">--&gt;</span></span>
+    &lt;/<span class="pl-ent">set</span>&gt;
+&lt;/<span class="pl-ent">property</span>&gt;</pre></div>
+</li>
+<li>Map 集合
+<div class="highlight highlight-text-xml"><pre class="notranslate">&lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>map<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">map</span>&gt;
+        &lt;<span class="pl-ent">entry</span> <span class="pl-e">key</span>=<span class="pl-s"><span class="pl-pds">"</span>country<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>china<span class="pl-pds">"</span></span>/&gt;
+        &lt;<span class="pl-ent">entry</span> <span class="pl-e">key</span>=<span class="pl-s"><span class="pl-pds">"</span>province<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>henan<span class="pl-pds">"</span></span>/&gt;
+        &lt;<span class="pl-ent">entry</span> <span class="pl-e">key</span>=<span class="pl-s"><span class="pl-pds">"</span>city<span class="pl-pds">"</span></span> <span class="pl-e">value</span>=<span class="pl-s"><span class="pl-pds">"</span>kaifeng<span class="pl-pds">"</span></span>/&gt;
+    &lt;/<span class="pl-ent">map</span>&gt;
+&lt;/<span class="pl-ent">property</span>&gt;</pre></div>
+</li>
+<li>Properties 集合
+<div class="highlight highlight-text-xml"><pre class="notranslate">&lt;<span class="pl-ent">property</span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>properties<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">props</span>&gt;
+        &lt;<span class="pl-ent">prop</span> <span class="pl-e">key</span>=<span class="pl-s"><span class="pl-pds">"</span>country<span class="pl-pds">"</span></span>&gt;china&lt;/<span class="pl-ent">prop</span>&gt;
+        &lt;<span class="pl-ent">prop</span> <span class="pl-e">key</span>=<span class="pl-s"><span class="pl-pds">"</span>province<span class="pl-pds">"</span></span>&gt;henan&lt;/<span class="pl-ent">prop</span>&gt;
+        &lt;<span class="pl-ent">prop</span> <span class="pl-e">key</span>=<span class="pl-s"><span class="pl-pds">"</span>city<span class="pl-pds">"</span></span>&gt;kaifeng&lt;/<span class="pl-ent">prop</span>&gt;
+    &lt;/<span class="pl-ent">props</span>&gt;
+&lt;/<span class="pl-ent">property</span>&gt;</pre></div>
+</li>
+</ol>
+</li>
+<li>复杂对象注入<br>
+若集合元素是其他 Bean，可替换<code class="notranslate">&lt;value&gt;</code>为<code class="notranslate">&lt;ref bean="beanId"&gt;</code>
+<div class="highlight highlight-text-xml"><pre class="notranslate">&lt;<span class="pl-ent">list</span>&gt;
+    &lt;<span class="pl-ent">ref</span> <span class="pl-e">bean</span>=<span class="pl-s"><span class="pl-pds">"</span>userService<span class="pl-pds">"</span></span>/&gt; <span class="pl-c"><span class="pl-c">&lt;!--</span> 引用容器中 id 为 userService 的 Bean <span class="pl-c">--&gt;</span></span>
+&lt;/<span class="pl-ent">list</span>&gt;</pre></div>
+</li>
+</ul></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
