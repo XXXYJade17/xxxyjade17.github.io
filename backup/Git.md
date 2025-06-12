@@ -67,3 +67,19 @@
 删除分支：git branch -d 分支名，删除时需先退出要删除的分支。
 合并分支：git merge 被合并的分支名。
 合并分支案例：在 dev 分支下修改 readme 文件并提交，切换到 master 分支查看，然后合并 dev 分支到 master 分支，最后删除 dev 分支，合并后需将 master 分支提交到线上远程仓库。
+***
+## 常见冲突
+  - 产生：同事在下班之后修改了线上仓库的代码，我进行修改前没有进行``` git pull ```操作，``` git push ```时本地内容与仓库内容不同，系统提示冲突：
+    ```
+    error: failed to push some refs...
+    hint: Updates were rejected because the remote contains work that you do not have locally.
+    ```
+  - 解决：执行git pull合并远程内容，将远程仓库的更新拉取到本地，并尝试自动合并冲突。打开冲突文件（如readme.txt），会看到冲突标记：
+    ```
+    <<<<<<< HEAD
+    这些文字是我次日上班时候写的。
+    =======
+    这是我同事小A在我下班之后做的修改。
+    >>>>>>> 远程分支哈希值
+    ```
+    与同事协商保留哪些内容，删除冲突标记（<<<<<<<, =======, >>>>>>>），保留最终确认的代码
