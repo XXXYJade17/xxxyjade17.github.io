@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Thu, 12 Jun 2025 12:51:09 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>Nginx</title><link>https://xxxyjade17.github.io/post/Nginx.html</link><description># Nginx
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Thu, 12 Jun 2025 12:55:54 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>Swagger</title><link>https://xxxyjade17.github.io/post/Swagger.html</link><description>## Swagger
+
+### 1. 介绍
+
+Swagger 是一个规范和完整的框架，用于生成、描述、调用和可视化 RESTful 风格的 Web 服务(&lt;https://swagger.io/&gt;)。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/Swagger.html</guid><pubDate>Thu, 12 Jun 2025 12:55:26 +0000</pubDate></item><item><title>Nginx</title><link>https://xxxyjade17.github.io/post/Nginx.html</link><description># Nginx
 ***
 ## 反向代理
 - 配置示例：
