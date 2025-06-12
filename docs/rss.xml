@@ -1,5 +1,56 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Sat, 07 Jun 2025 14:29:52 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>Git</title><link>https://xxxyjade17.github.io/post/Git.html</link><description>## 本地仓库
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog Title</title><link>https://xxxyjade17.github.io</link><description>Blog description</description><copyright>Blog Title</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://xxxyjade17.github.io</link></image><lastBuildDate>Thu, 12 Jun 2025 12:51:09 +0000</lastBuildDate><managingEditor>Blog Title</managingEditor><ttl>60</ttl><webMaster>Blog Title</webMaster><item><title>Nginx</title><link>https://xxxyjade17.github.io/post/Nginx.html</link><description># Nginx
+***
+## 反向代理
+- 配置示例：
+  nginx.conf
+  ```
+  server {
+      listen 80;              # 监听端口
+      server_name localhost;  # 服务器名称
+  
+      location /api/ {
+          proxy_pass http://localhost:8080/admin/;  # 转发请求到内部服务器
+      }
+  }
+  ```
+- 说明：
+  listen：Nginx 监听的端口
+  server_name：服务器域名或 IP
+  location /api/：匹配以/api/开头的 URL 路径
+  proxy_pass：将请求转发到指定 URL（注意末尾/的影响）
+  请求 URL：http://localhost/api/users
+  实际转发：http://localhost:8080/admin/users
+***
+## 负载均衡
+- 配置实例：
+  nginx.conf
+  ```
+  # 定义后端服务器组
+  upstream webservers {
+      server 192.168.100.128:8080;
+      server 192.168.100.129:8080;
+  }
+
+  server {
+      listen 80;
+      server_name localhost;
+  
+     location /api/ {
+          proxy_pass http://webservers/admin/;  # 使用负载均衡组
+      }
+  }
+  ```
+- 说明
+  upstream：定义后端服务器组名称（如webservers）
+  默认负载均衡算法：轮询（Round Robin）
+  自动健康检查：自动跳过无响应的服务器
+- 负载均衡策略：
+  ip_hash：基于客户端 IP 分配固定服务器（解决 Session 问题）
+  least_conn：分配给连接数最少的服务器
+  权重配置：``` server 192.168.100.128:8080 weight=2;  # 处理2倍请求 ```
+
+。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/Nginx.html</guid><pubDate>Thu, 12 Jun 2025 12:50:31 +0000</pubDate></item><item><title>Git</title><link>https://xxxyjade17.github.io/post/Git.html</link><description>## 本地仓库
   - ### 工作流程
     Git 本地操作的三个区域：工作区、暂存区、Git 仓库。</description><guid isPermaLink="true">https://xxxyjade17.github.io/post/Git.html</guid><pubDate>Sat, 07 Jun 2025 14:29:24 +0000</pubDate></item><item><title>Maven</title><link>https://xxxyjade17.github.io/post/Maven.html</link><description>## 继承 :
 
